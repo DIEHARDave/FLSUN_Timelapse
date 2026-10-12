@@ -6,6 +6,8 @@
 #   - /usr/lib/git-core was deleted (git has no https helper).
 # Safe to re-run; install.sh runs it every time, then installs the boot
 # service that keeps the clock right. Run as pi; uses sudo.
+# Shared, unchanged, by FLSUN_Timelapse and FLSUN_RemoteScreen: whichever
+# plugin is installed first applies these fixes.
 
 set -e
 

@@ -1,5 +1,5 @@
 [Unit]
-Description=Set the clock at boot (FLSUN_Timelapse)
+Description=Set the clock at boot (FLSun T1 Pro image fix)
 Wants=network-online.target
 After=network-online.target rc-local.service
 

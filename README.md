@@ -15,7 +15,7 @@ FLSun's own timelapse depends on the FLSun phone app, which no longer works. Thi
 
 SSH into the printer as `pi` (the default password is `1`).
 
-1. Prepare the system. FLSun's system image can't reach GitHub as shipped: the clock starts about a year and a half in the past, the certificate links are missing, and git's https support was removed. These commands fix all three:
+1. Prepare the system. FLSun's system image can't reach GitHub as shipped: the clock starts about a year and a half in the past, the certificate links are missing, and git's https support was removed. These commands fix all three (skip them if [FLSUN_RemoteScreen](https://github.com/DIEHARDave/FLSUN_RemoteScreen) is already installed; it makes the same fixes):
 
    ```sh
    sudo ntpdate -u -b time.google.com
