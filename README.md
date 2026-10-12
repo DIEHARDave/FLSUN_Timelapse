@@ -2,7 +2,7 @@
 
 Timelapse videos for the **FLSun T1 Pro**, viewable and downloadable from Mainsail and Fluidd.
 
-FLSun's own timelapse depends on the FLSun phone app, which no longer works. This plugin replaces it with [moonraker-timelapse](https://github.com/mainsail-crew/moonraker-timelapse), the same timelapse that Zmod adds to Flashforge printers. It uses the T1 Pro's built-in camera stream and the ffmpeg that FLSun already ships.
+FLSun's own timelapse depends on the FLSun phone app, which no longer works. This plugin replaces it with [moonraker-timelapse](https://github.com/mainsail-crew/moonraker-timelapse). It uses the T1 Pro's built-in camera stream and the ffmpeg that FLSun already ships.
 
 ## What it does
 
@@ -89,6 +89,5 @@ Rendered videos in `~/printer_data/timelapse` are kept. The system fixes (clock 
 ## Credits
 
 - [moonraker-timelapse](https://github.com/mainsail-crew/moonraker-timelapse) by Christoph Frei, Alex Zellner and the mainsail-crew
-- [ghzserg/timelapse](https://github.com/ghzserg/timelapse), the Zmod port that showed the way
 
 Licensed under GPLv3, like moonraker-timelapse.
