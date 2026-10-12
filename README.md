@@ -67,7 +67,7 @@ Videos are saved in `~/printer_data/timelapse`.
 | `~/printer_data/config/timelapse.cfg` | FLSun's empty stub is renamed to `timelapse.cfg.flsun` and replaced by a link to `klipper_macro/timelapse.cfg` (`printer.cfg` already includes it) |
 | `~/printer_data/config/flsun_timelapse.conf` | New file: timelapse and update-manager settings |
 | `~/printer_data/config/moonraker.conf` | Adds `[include flsun_timelapse.conf]` (a backup is saved first) |
-| System clock | Sets it now, and adds `flsun-timesync.service`, which sets it at every boot |
+| System clock | Sets it now, and adds `flsun-timesync.service` (`/usr/local/bin/flsun-timesync`), which sets it at every boot, saves it to `/etc/lasttime` and restarts ntpd. FLSun's `/etc/monitor` restores the date from that file at each boot but, because of a bug, never updates it, so without this fix the clock returns to the same old date after every boot |
 | `/etc/ssl/certs` | Rebuilds the missing certificate links (`update-ca-certificates`) |
 | git | Reinstalls Debian's git package (2.20.1-2+deb10u9) to restore the https support FLSun deleted |
 

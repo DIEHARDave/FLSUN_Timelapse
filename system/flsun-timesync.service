@@ -1,0 +1,12 @@
+[Unit]
+Description=Set the clock at boot (FLSUN_Timelapse)
+Wants=network-online.target
+After=network-online.target rc-local.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/flsun-timesync
+TimeoutStartSec=240
+
+[Install]
+WantedBy=multi-user.target

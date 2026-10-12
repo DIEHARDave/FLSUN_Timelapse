@@ -33,6 +33,12 @@ esac
 # Clock, certificates and git https support; see prepare.sh.
 "${REPO_DIR}/prepare.sh"
 
+msg "Installing the boot service that sets the clock"
+sudo install -m 755 "${REPO_DIR}/system/flsun-timesync" /usr/local/bin/flsun-timesync
+sudo install -m 644 "${REPO_DIR}/system/flsun-timesync.service" /etc/systemd/system/flsun-timesync.service
+sudo systemctl daemon-reload
+sudo systemctl enable flsun-timesync.service > /dev/null 2>&1
+
 msg "Linking the Moonraker component"
 ln -sfn "${REPO_DIR}/component/timelapse.py" "${COMPONENTS_DIR}/timelapse.py"
 
