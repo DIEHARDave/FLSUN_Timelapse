@@ -29,6 +29,9 @@ sed -i '/^\[include flsun_timelapse\.conf\]/d' "$MOONRAKER_CONF"
 rm -f "${CONFIG_DIR}/flsun_timelapse.conf"
 rm -rf "${HOME}/printer_data/timelapse_frames"
 
+# The flsun-timesync boot service from prepare.sh is left in place on
+# purpose: a correct clock helps everything else on the printer too.
+
 msg "Restarting Moonraker and Klipper"
 sudo systemctl restart moonraker
 sudo systemctl restart klipper

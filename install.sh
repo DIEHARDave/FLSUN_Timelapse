@@ -30,12 +30,8 @@ case "$state" in
     printing|paused) die "a print is $state; run this again when the printer is idle" ;;
 esac
 
-# The T1 Pro ships with time sync off and the clock stuck in the past, which
-# breaks HTTPS to GitHub (certificates look "not yet valid") and video dates.
-if [ "$(timedatectl show -p NTPSynchronized --value 2>/dev/null)" != "yes" ]; then
-    msg "Turning on network time sync"
-    sudo timedatectl set-ntp true || warn "could not enable time sync"
-fi
+# Clock, certificates and git https support; see prepare.sh.
+"${REPO_DIR}/prepare.sh"
 
 msg "Linking the Moonraker component"
 ln -sfn "${REPO_DIR}/component/timelapse.py" "${COMPONENTS_DIR}/timelapse.py"

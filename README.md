@@ -15,13 +15,14 @@ FLSun's own timelapse depends on the FLSun phone app, which no longer works. Thi
 
 SSH into the printer as `pi` (the default password is `1`).
 
-1. Turn on network time sync. The T1 Pro ships with it off, and with the wrong date, downloads from GitHub fail:
+1. Prepare the system. FLSun's system image can't reach GitHub as shipped: the clock starts about a year and a half in the past, the certificate links are missing, and git's https support was removed. These commands fix all three:
 
    ```sh
-   sudo timedatectl set-ntp true
+   sudo ntpdate -u -b time.google.com
+   curl -fsSL --cacert /etc/ssl/certs/ca-certificates.crt https://raw.githubusercontent.com/DIEHARDave/FLSUN_Timelapse/main/prepare.sh | bash
    ```
 
-   Wait about a minute, then check that `date` shows the right time.
+   Don't use `timedatectl set-ntp true`: on this image it stops the time service rather than starting it.
 
 2. Download and install the plugin while the printer is idle:
 
@@ -66,7 +67,9 @@ Videos are saved in `~/printer_data/timelapse`.
 | `~/printer_data/config/timelapse.cfg` | FLSun's empty stub is renamed to `timelapse.cfg.flsun` and replaced by a link to `klipper_macro/timelapse.cfg` (`printer.cfg` already includes it) |
 | `~/printer_data/config/flsun_timelapse.conf` | New file: timelapse and update-manager settings |
 | `~/printer_data/config/moonraker.conf` | Adds `[include flsun_timelapse.conf]` (a backup is saved first) |
-| System clock | Turns on network time sync |
+| System clock | Sets it now, and adds `flsun-timesync.service`, which sets it at every boot |
+| `/etc/ssl/certs` | Rebuilds the missing certificate links (`update-ca-certificates`) |
+| git | Reinstalls Debian's git package (2.20.1-2+deb10u9) to restore the https support FLSun deleted |
 
 ## Uninstall
 
@@ -75,7 +78,7 @@ Videos are saved in `~/printer_data/timelapse`.
 rm -rf ~/FLSUN_Timelapse
 ```
 
-Rendered videos in `~/printer_data/timelapse` are kept.
+Rendered videos in `~/printer_data/timelapse` are kept. The system fixes (clock service, certificate links, git) stay, because they help the rest of the printer too.
 
 ## Changes from upstream
 
