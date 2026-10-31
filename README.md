@@ -1,5 +1,7 @@
 # FLSUN_Timelapse
 
+> **Parts:** the printers, boards, readers and other gear that go with this project are listed at [projects.die-hard.net/gear](https://projects.die-hard.net/gear) (Amazon affiliate links).
+
 Timelapse videos for the **FLSun T1 Pro**, viewable and downloadable from Mainsail and Fluidd.
 
 FLSun's own timelapse depends on the FLSun phone app, which no longer works. This plugin replaces it with [moonraker-timelapse](https://github.com/mainsail-crew/moonraker-timelapse). It uses the T1 Pro's built-in camera stream and the ffmpeg that FLSun already ships.
